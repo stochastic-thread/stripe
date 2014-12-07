@@ -2,9 +2,16 @@
 
 Stripe API client for Elixir
 
+** Work in progress **
+
+
 ## Scope
 
 The goal is to map all objects in the Stripe API 1-1
+
+### TODO
+
+#### Resources
 
 [ ] Charges
 [ ] Refunds
@@ -25,6 +32,10 @@ The goal is to map all objects in the Stripe API 1-1
 [ ] Balance
 [ ] Events
 [ ] Tokens
+
+#### Features
+
+[ ] Cast nested resources
 
 ## Authentication
 
