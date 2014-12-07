@@ -54,7 +54,7 @@ customers = Stripe.Customers.get
 length customers
 # => 10
 
-List.first customers
+customer = List.first customers
   # => %Stripe.Customer{account_balance: 0,
   #      cards: %{"data" => [%{"address_city" => nil, "address_country" => nil,
   #            "address_line1" => nil, "address_line1_check" => nil,
@@ -75,12 +75,12 @@ List.first customers
   #         "url" => "/v1/customers/cus_5HYg9UxTAsC84D/subscriptions"}}
 
 # Get a customer by ID
-customer_id = List.first(customers).id
+customer_id = customer.id
 Stripe.Customers.get %{id: customer_id}
 # => %Stripe.Customer{account_balance: 0, ...
 
 # Get a card (nested under customers)
-Stripe.Cards.get %{customer_id: customer_id, id: List.first(customers).default_card}
+Stripe.Cards.get %{customer_id: customer_id, id: customer.default_card}
 # => %Stripe.Card{address_city: nil, address_country: nil, address_line1: nil,
 #         address_line1_check: nil, address_line2: nil, address_state: nil,
 #         address_zip: nil, address_zip_check: nil, brand: "Visa", country: "US",
