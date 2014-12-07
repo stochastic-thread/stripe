@@ -36,7 +36,7 @@ The RESTfulness of the Stripe API makes this easy. In essence, for every object
 in the Stripe ecosystem, we should be able to make calls such as:
 
 ```Elixir
-Stripe.Accounts.get("some_account_id")
+Stripe.Accounts.get(%{id: "some_account_id"})
 # => %Stripe.Account{ business_name: "Seneca Systems" ...}
 ```
 
