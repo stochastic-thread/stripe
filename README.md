@@ -4,7 +4,6 @@ Stripe API client for Elixir
 
 ** Work in progress **
 
-
 ## Scope
 
 The goal is to map all objects in the Stripe API 1-1
@@ -13,29 +12,29 @@ The goal is to map all objects in the Stripe API 1-1
 
 #### Resources
 
-[ ] Charges
-[ ] Refunds
-[ ] Customers
-[ ] Cards
-[ ] Subscriptions
-[ ] Plans
-[ ] Coupons
-[ ] Discounts
-[ ] Invoices
-[ ] Invoice Items
-[ ] Disputes
-[ ] Transfers
-[ ] Recipients
-[ ] Application Fees
-[ ] Application Fee Refunds
-[ ] Account
-[ ] Balance
-[ ] Events
-[ ] Tokens
+- [ ] Charges
+- [ ] Refunds
+- [ ] Customers
+- [ ] Cards
+- [ ] Subscriptions
+- [ ] Plans
+- [ ] Coupons
+- [ ] Discounts
+- [ ] Invoices
+- [ ] Invoice Items
+- [ ] Disputes
+- [ ] Transfers
+- [ ] Recipients
+- [ ] Application Fees
+- [ ] Application Fee Refunds
+- [ ] Account
+- [ ] Balance
+- [ ] Events
+- [ ] Tokens
 
 #### Features
 
-[ ] Cast nested resources
+- [ ] Cast nested resources
 
 ## Authentication
 
