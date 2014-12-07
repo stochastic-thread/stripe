@@ -3,7 +3,7 @@ defmodule Stripe.Customer do
   The Struct and type spec information for a Stripe Customer
   """
 
-  @type t :: %Stripe.Card{
+  @type t :: %Stripe.Customer{
                      id: String.t,
                  object: String.t,
                 created: number,

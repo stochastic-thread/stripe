@@ -36,10 +36,46 @@ The RESTfulness of the Stripe API makes this easy. In essence, for every object
 in the Stripe ecosystem, we should be able to make calls such as:
 
 ```Elixir
-Stripe.Accounts.get(%{id: "some_account_id"})
-# => %Stripe.Account{ business_name: "Seneca Systems" ...}
-```
+Stripe.start
 
-The pluralized object name (`Stripe.Accounts`) is used to return an individual instance,
-or, in the case of the index read (`Stripe.Accounts.get`), a list of instances.
-Those are instances of structs named for the singular resource name (e.g. `Stripe.Account`.)
+customers = Stripe.Customers.get
+# => [%Stripe.Customer{account_balance: 0,...]
+
+length customers
+# => 10
+
+List.first customers
+  # => %Stripe.Customer{account_balance: 0,
+  #      cards: %{"data" => [%{"address_city" => nil, "address_country" => nil,
+  #            "address_line1" => nil, "address_line1_check" => nil,
+  #            "address_line2" => nil, "address_state" => nil, "address_zip" => nil,
+  #            "address_zip_check" => nil, "brand" => "Visa", "country" => "US",
+  #            "customer" => "cus_5HYg9UxTAsC84D", "cvc_check" => "pass",
+  #            "dynamic_last4" => nil, "exp_month" => 11, "exp_year" => 2016,
+  #            "fingerprint" => "Xt5EWLLDS7FJjR1c", "funding" => "credit",
+  #            "id" => "card_156zZS2eZvKYlo2CcevEs4Be", "last4" => "4242", "name" => nil,
+  #            "object" => "card"}], "has_more" => false, "object" => "list",
+  #         "total_count" => 1, "url" => "/v1/customers/cus_5HYg9UxTAsC84D/cards"},
+  #      created: 1417937711, currency: nil,
+  #      default_card: "card_156zZS2eZvKYlo2CcevEs4Be", delinquent: false,
+  #      description: "erikyuzwa@gmail.com", discount: nil, id: "cus_5HYg9UxTAsC84D",
+  #      livemode: false, metadata: %{}, object: "customer",
+  #      subscriptions: %{"data" => [], "has_more" => false, "object" => "list",
+  #         "total_count" => 0,
+  #         "url" => "/v1/customers/cus_5HYg9UxTAsC84D/subscriptions"}}
+
+# Get a customer by ID
+customer_id = List.first(customers).id
+Stripe.Customers.get %{id: customer_id}
+# => %Stripe.Customer{account_balance: 0, ...
+
+# Get a card (nested under customers)
+Stripe.Cards.get %{customer_id: customer_id, id: List.first(customers).default_card}
+# => %Stripe.Card{address_city: nil, address_country: nil, address_line1: nil,
+#         address_line1_check: nil, address_line2: nil, address_state: nil,
+#         address_zip: nil, address_zip_check: nil, brand: "Visa", country: "US",
+#         customer: "cus_5HYg9UxTAsC84D", cvc_check: "pass", dynamic_last4: nil,
+#         exp_month: 11, exp_year: 2016, fingerprint: "Xt5EWLLDS7FJjR1c",
+#         funding: "credit", id: "card_156zZS2eZvKYlo2CcevEs4Be", last4: "4242",
+#         name: nil, object: "card"}
+```
