@@ -1,5 +1,5 @@
 defmodule Stripe.Customers do
-  @resource Stripe.Customer
   @endpoint "v1/customers/:id"
+  @resource Stripe.Customer
   use Stripe.Resource
 end
